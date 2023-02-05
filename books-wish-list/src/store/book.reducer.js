@@ -20,6 +20,8 @@ export function bookReducer(state = initialState, action) {
             newState = { ...state, wishBooks: action.wishBooks }
             break
         case REMOVE_WISH_BOOK:
+            boards = state.boards.map(board => (board._id === action.board._id) ? action.board : board)
+            return { ...state, boards }
             action.book.isWish = false
             wishBooks = state.wishBooks.filter(wishBook => wishBook._id !== action.book._id)
             newState = { ...state, wishBooks }
