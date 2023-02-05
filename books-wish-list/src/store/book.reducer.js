@@ -16,7 +16,7 @@ export function bookReducer(state = initialState, action) {
         case SET_BOOKS:
             newState = { ...state, books: action.books }
             break
-        case SET_BOOKS:
+        case SET_WISH_BOOKS:
             newState = { ...state, wishBooks: action.wishBooks }
             break
         case REMOVE_WISH_BOOK:

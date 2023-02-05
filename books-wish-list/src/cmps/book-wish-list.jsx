@@ -3,7 +3,7 @@ import { BookWishPreview } from "./book-wish-preview"
 
 export function BookWishList({ wishBooks }) {
     return (
-        <section className="book-wish-list">
+        <ul className="book-wish-list">
             {
                 wishBooks.map(wishBook => {
                     return <li key={wishBook._id}>
@@ -11,6 +11,6 @@ export function BookWishList({ wishBooks }) {
                     </li>
                 })  
             }
-        </section>
+        </ul>
     )
 }
