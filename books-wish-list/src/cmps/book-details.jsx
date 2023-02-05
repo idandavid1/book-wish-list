@@ -5,6 +5,7 @@ import { addWishBook, removeWishBook } from "../store/book.actions";
 
 export function BookDetails({ books }) {
 
+    
     const [pageIndex, setPageIndex] = useState(0)
 
     const onSetPage = (value) => {
