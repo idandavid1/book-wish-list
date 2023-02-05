@@ -1,5 +1,6 @@
 import { useEffect } from 'react'
 import { useSelector } from 'react-redux'
+import { BookWishList } from '../cmps/book-wish-list.jsx'
 import { bookService } from '../services/book.service.js'
 import { loadBooks, loadWishBooks } from '../store/book.actions.js'
 
@@ -37,6 +38,7 @@ export function BookIndex() {
         <div>
             <h3>Books App</h3>
             <main>
+                <BookWishList wishBooks={wishBooks}/>
             </main>
         </div>
     )
