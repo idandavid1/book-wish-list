@@ -1,0 +1,48 @@
+.book-details {
+    background-color: blanchedalmond;
+    width: 350px;
+    padding: 12px;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+
+    .book-header {
+        display: flex;
+        justify-content: space-between;
+        border-bottom: 2px solid rgb(194, 186, 186);
+
+        .book-title {
+            font-size: rem(32px);
+            padding: 10px 0;
+            font-weight: 500;
+        }
+    }
+
+    .book-author {
+        color: lightblue;
+        font-size: rem(24px);
+    }
+
+    .book-description {
+        height: 200px;
+        overflow-y: auto;
+        padding-right: 8px;
+    }
+
+    .btn {
+        position: absolute;
+        background: unset;
+        color: black;
+        font-size: 40px;
+    }
+
+    .prev-book-btn {
+        left: -54px;
+        top: 43%;
+    }
+
+    .next-book-btn {
+        right: -54px;
+        top: 43%;
+    }
+}
