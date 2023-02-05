@@ -8,19 +8,14 @@ _createBooks()
 export const bookService = {
     query,
     getById,
-    save,
-    remove,
+    toggleIsWish
 }
 
-async function query() {
+async function query(isWish) {
     var books = await storageService.query(STORAGE_KEY)
-    // if (filterBy.txt) {
-    //     const regex = new RegExp(filterBy.txt, 'i')
-    //     cars = cars.filter(car => regex.test(car.vendor) || regex.test(car.description))
-    // }
-    // if (filterBy.price) {
-    //     cars = cars.filter(car => car.price <= filterBy.price)
-    // }
+    if(isWish) {
+        books = books.filter(book => book.isWish === true)
+    }
     return books
 }
 
@@ -28,13 +23,9 @@ function getById(bookId) {
     return storageService.get(STORAGE_KEY, bookId)
 }
 
-function remove(bookId) {
-    return storageService.remove(STORAGE_KEY, bookId)
-}
-
-function save(book) {
-    if (book._id) return storageService.put(STORAGE_KEY, book)
-    return storageService.post(STORAGE_KEY, book)
+function toggleIsWish(book) {
+    book.isWish = !book.isWish
+    return storageService.put(STORAGE_KEY, book)
 }
 
 function _createBooks() {
