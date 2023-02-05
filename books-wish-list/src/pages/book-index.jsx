@@ -39,6 +39,8 @@ export function BookIndex() {
         <div>
             <h3>Books App</h3>
             <main>
+                <BookDetails books={books} />
+                <BookWishList wishBooks={wishBooks} />
             </main>
         </div>
     )
