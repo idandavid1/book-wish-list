@@ -1,11 +1,12 @@
 import { useState } from "react";
-import { IoIosArrowForward } from 'react-icons/io'
+import { IoIosArrowForward, IoLogoGameControllerA } from 'react-icons/io'
 import { IoIosArrowBack } from 'react-icons/io'
 import { addWishBook, removeWishBook } from "../store/book.actions";
 
-export function BookDetails({ books }) {
+import { AiOutlineStar, AiFillStar } from 'react-icons/ai'
 
-    
+export function BookDetails({ books }) {
+    let _ = require('lodash')
     const [pageIndex, setPageIndex] = useState(0)
 
     const onSetPage = (value) => {
@@ -19,6 +20,19 @@ export function BookDetails({ books }) {
         removeWishBook(book)
     }
 
+    const getStarred = (rating) => {
+        let fillRating = Math.round(rating)
+        const outFillRating = Math.round(5 - rating)
+        if(fillRating + outFillRating > 5) fillRating--
+        
+        return (
+            <>
+                {_.times(fillRating, () => <AiFillStar key={_.uniqueId('KEY_')} className="icon fill" />)}
+                {_.times(outFillRating, () => <AiOutlineStar key={_.uniqueId('KEY_')} className="icon" />)}    
+            </>
+        )
+    }
+
     if (!books.length) return <div></div>
     return (
         <section className="book-details">
@@ -28,7 +42,7 @@ export function BookDetails({ books }) {
             </div>
             <h4 className="book-author">{books[pageIndex].author}</h4>
             <p className="book-description">{books[pageIndex].description}</p>
-            <span className="book-rating">Rating: {books[pageIndex].rating}</span>
+            <span className="book-rating">Rating: {getStarred(books[pageIndex].rating)}</span>
             <span className="book-price">Price: {books[pageIndex].price}</span>
 
             <button className={`prev-book-btn btn ${pageIndex === 0 ? 'hidden' : ''}`} onClick={() => onSetPage(-1)}><IoIosArrowBack /></button>
