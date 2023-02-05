@@ -1,14 +1,16 @@
 import { useEffect } from 'react'
 import { useSelector } from 'react-redux'
 import { bookService } from '../services/book.service.js'
-import { loadBooks } from '../store/book.actions.js'
+import { loadBooks, loadWishBooks } from '../store/book.actions.js'
 
 export function BookIndex() {
 
     const books = useSelector(storeState => storeState.bookModule.books)
+    const wishBooks = useSelector(storeState => storeState.bookModule.wishBooks)
 
     useEffect(() => {
         loadBooks()
+        loadWishBooks()
     }, [])
 
     // async function onRemoveCar(carId) {
