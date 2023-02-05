@@ -36,12 +36,12 @@ export function BookIndex() {
     // }
 
     return (
-        <div>
+        <section className='book-index'>
             <h3>Books App</h3>
             <main>
                 <BookDetails books={books} />
                 <BookWishList wishBooks={wishBooks} />
             </main>
-        </div>
+        </section>
     )
 }

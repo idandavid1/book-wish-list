@@ -38,14 +38,16 @@ function _createBooks() {
                     "description": "Written in 1936 when Amado was twenty-four years old, Sea of Death tells the dockside tales of Bahia. Sailors and their wives, steeped in the rich mythology surrounding the goddess Iemanj?, are at the heart of this novel, a lyrical and tragic portrayal of the workers daily struggle for survival. Sea of Death narrates the story of Guma and L?via, lovers whose triumphs and tribulations mirror the dark imperatives of the world around them.",
                     "rating": "4.2",
                     "author": "Jorge Amado",
-                    "price": "16.35"
+                    "price": "16.35",
+                    "isWish": true
                 },
                 {
                     "title": "The Day Lasts More than a Hundred Years",
                     "description": "Set in the vast windswept Central Asian steppes and the infinite reaches of galactic space, this powerful novel offers a vivid view of the culture and values of the Soviet Unions Central Asian peoples.",
                     "rating": "4.5",
                     "author": "Chingiz Aitmatov",
-                    "price": "24"
+                    "price": "24",
+                    "isWish": true
                 }
             ]
     }

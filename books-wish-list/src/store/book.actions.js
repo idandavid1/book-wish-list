@@ -15,6 +15,7 @@ export async function loadBooks() {
 export async function loadWishBooks() {
     try {
         const wishBooks = await bookService.query(true)
+        console.log('wishBooks:', wishBooks)
         store.dispatch({ type: SET_WISH_BOOKS, wishBooks })
     } catch (err) {
         console.log('Cannot load books', err)
