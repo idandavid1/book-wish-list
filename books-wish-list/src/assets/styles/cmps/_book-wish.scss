@@ -15,10 +15,13 @@
     height: 60px;
     align-items: center;
     background-color: aliceblue;
+    justify-content: space-between;
+
    .icon {
         margin-left: 10px;
         font-size: 30px;
         color: darkblue;
+        cursor: pointer;
    }
 
 }

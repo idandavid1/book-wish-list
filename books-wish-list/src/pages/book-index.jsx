@@ -3,7 +3,7 @@ import { useSelector } from 'react-redux'
 import { BookDetails } from '../cmps/book-details.jsx'
 import { BookWishList } from '../cmps/book-wish-list.jsx'
 import { bookService } from '../services/book.service.js'
-import { loadBooks, loadWishBooks } from '../store/book.actions.js'
+import { loadBooks, loadWishBooks, removeWishBook } from '../store/book.actions.js'
 
 export function BookIndex() {
 
@@ -15,32 +15,21 @@ export function BookIndex() {
         loadWishBooks()
     }, [])
 
-    // async function onRemoveCar(carId) {
-    //     try {
-    //         await removeCar(carId)
-    //         showSuccessMsg('Car removed')            
-    //     } catch (err) {
-    //         showErrorMsg('Cannot remove car')
-    //     }
-    // }
+    async function onRemoveBook(book) {
+        try {
+            removeWishBook(book)           
+        } catch (err) {
+            console.log('Cannot remove book')
+        }
+    }
 
-    // async function onUpdateCar(car) {
-    //     const price = +prompt('New price?')
-    //     const carToSave = { ...car, price }
-    //     try {
-    //         const savedCar = await updateCar(carToSave)
-    //         showSuccessMsg(`Car updated, new price: ${savedCar.price}`)
-    //     } catch (err) {
-    //         showErrorMsg('Cannot update car')
-    //     }        
-    // }
 
     return (
         <section className='book-index'>
             <h3>Books App</h3>
             <main>
                 <BookDetails books={books} />
-                <BookWishList wishBooks={wishBooks} />
+                <BookWishList wishBooks={wishBooks} onRemoveBook={onRemoveBook}/>
             </main>
         </section>
     )
