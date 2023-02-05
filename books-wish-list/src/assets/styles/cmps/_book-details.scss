@@ -1,10 +1,11 @@
 .book-details {
-    background-color: blanchedalmond;
+    background-color: #ffffff;
     width: 350px;
     padding: 12px;
     display: flex;
     flex-direction: column;
     position: relative;
+    gap: 6px;
 
     .book-header {
         display: flex;
@@ -44,5 +45,9 @@
     .next-book-btn {
         right: -54px;
         top: 43%;
+    }
+
+    .hidden {
+        display: none;
     }
 }

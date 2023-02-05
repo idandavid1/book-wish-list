@@ -26,8 +26,9 @@ export function bookReducer(state = initialState, action) {
             break
         case ADD_WISH_BOOK:
             action.book.isWish = true
-            wishBooks.push(book)
-            newState = { ...state, wishBooks }
+            const booksToSave = state.wishBooks
+            booksToSave.push(action.book)
+            newState = { ...state, wishBooks: booksToSave }
             break
         default:
     }
