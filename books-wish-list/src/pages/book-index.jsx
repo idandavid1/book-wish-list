@@ -2,6 +2,7 @@ import { useEffect } from 'react'
 import { useSelector } from 'react-redux'
 import { BookDetails } from '../cmps/book-details.jsx'
 import { BookWishList } from '../cmps/book-wish-list.jsx'
+import { FilterWishBook } from '../cmps/filter-wish-book.jsx'
 import { bookService } from '../services/book.service.js'
 import { loadBooks, loadWishBooks, removeWishBook } from '../store/book.actions.js'
 
@@ -12,7 +13,7 @@ export function BookIndex() {
 
     useEffect(() => {
         loadBooks()
-        loadWishBooks()
+        loadWishBooks(bookService.getEmptyFilter())
     }, [])
 
     async function onRemoveBook(book) {
@@ -29,7 +30,10 @@ export function BookIndex() {
             <h3>Books App</h3>
             <main>
                 <BookDetails books={books} />
+                <div>
+                <FilterWishBook loadWishBooks={loadWishBooks}/>
                 <BookWishList wishBooks={wishBooks} onRemoveBook={onRemoveBook}/>
+                </div>
             </main>
         </section>
     )

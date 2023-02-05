@@ -1,7 +1,6 @@
 
 import { storageService } from './async-storage.service.js'
 import { utilService } from './util.service.js'
-// import axios from 'axios'
 
 const STORAGE_KEY = 'book'
 
@@ -9,17 +8,16 @@ _createBooks()
 export const bookService = {
     query,
     getById,
-    toggleIsWish
+    toggleIsWish,
+    getEmptyFilter
 }
 
-async function query(isWish) {
-    var books = await storageService.query(STORAGE_KEY)
-    // if(!books || !books.length){
-    // books = await axios.get("http://s3.amazonaws.com/sundaysky-mock/books/listOfBooks.json")
-    // }  
-    if (isWish) {
-        books = books.filter(book => book.isWish === true)
-    }
+async function query(filter = getEmptyFilter()) {
+    var books = await storageService.query(STORAGE_KEY) 
+    if (filter.isWish) books = books.filter(book => book.isWish === true)
+    if(filter.title) books = books.sort((t1, t2) => t1.title.localeCompare(t2.title) * filter.title)
+    else if(filter.price) books = books.sort((p1, p2) => (p1.price - p2.price)  * filter.price)
+    else if(filter.rating) books = books.sort((r1, r2) => (r1.rating - r2.rating)  * filter.rating)
     return books
 }
 
@@ -30,6 +28,15 @@ function getById(bookId) {
 function toggleIsWish(book) {
     book.isWish = !book.isWish
     return storageService.put(STORAGE_KEY, book)
+}
+
+function getEmptyFilter() {
+    return {
+        isWish: null,
+        title: null,
+        price: null,
+        rating: null,
+    }
 }
 
 function _createBooks() {
